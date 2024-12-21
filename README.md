@@ -19,7 +19,7 @@ To run the notebook, ensure you have the following installed:
 
 The dataset should be structured as follows:
 
-`
+```
 root/
 ├── dog/
 │   ├── xxx.mp4
@@ -30,7 +30,7 @@ root/
 │   ├── nsdf3.mp4
 │   └── ...
 └── ...
-`
+```
 
 Where each folder (dog, cat, etc.) represents a class, and each .mp4 file represents a video belonging to that class.
 
