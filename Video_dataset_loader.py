@@ -7,6 +7,7 @@ import subprocess
 from PIL import Image
 import shutil
 import sys
+import numpy as np
 
 # Use this function to load the data path and label for the dataset
 def data_and_words(path):
@@ -79,14 +80,11 @@ class VideoDataset(Dataset):
 
         video_images = sorted(os.listdir(output_video_path))
 
-        # Setting variables for the range in for loop
-        starting_frame = 0
-        step_size = len(video_images)//self.NUM_FRAMES
-        ending_frame = len(video_images)-len(video_images)%self.NUM_FRAMES  # Subtraction to remove the remainder so that we run the for loop extra
+        frame_positions = np.linspace(0, end, self.max_frames, endpoint=False)
 
         # Selecting the NUM_FRAMES from the video
-        for n in range(starting_frame, ending_frame, step_size):
-            img = video_images[n]
+        for n in frame_positions:
+            img = video_images[int(n)]
             img_path = os.path.join(output_video_path, img)
             with Image.open(img_path) as pil_img:
                 if self.transform_frame:
