@@ -77,7 +77,7 @@ class VideoDataset(Dataset):
 
         video_frames = []
 
-        video_images = os.listdir(output_video_path)
+        video_images = sorted(os.listdir(output_video_path))
 
         # Setting variables for the range in for loop
         starting_frame = 0
